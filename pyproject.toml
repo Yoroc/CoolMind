@@ -10,7 +10,7 @@ readme = "README.md"
 requires-python = ">=3.9"
 license = {text = "MIT"}
 authors = [
-    {name = "Developer", email = "dev@example.com"}
+    {name = "Yoroc", email = "yoroc@users.noreply.github.com"}
 ]
 dependencies = [
     "numpy",
@@ -23,7 +23,9 @@ dependencies = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/yourusername/CoolMind"
+"Homepage" = "https://github.com/Yoroc/CoolMind"
+"Repository" = "https://github.com/Yoroc/CoolMind"
+"Issue Tracker" = "https://github.com/Yoroc/CoolMind/issues"
 
 [tool.setuptools.packages.find]
 where = ["coolmind"]
