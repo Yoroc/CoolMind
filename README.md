@@ -144,3 +144,4 @@ Copyright (c) 2026 Yoroc
 This started because I was sick of my workspace turning into a sauna just to chat with an AI. It's not perfect - the temp watching is Windows-only for now and the quantization is basic - but it actually works for keeping your PC from sounding like it's about to take off.
 
 If you find it useful, cool. If you've got ideas to make it better, even cooler. If it somehow catches your desk on fire... well, you were warned about the "don't sue me" part above.
+<!-- Last updated: Wed, Sep 16, 2026  4:50:44 PM -->
