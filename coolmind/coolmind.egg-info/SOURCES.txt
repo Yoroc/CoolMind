@@ -1,8 +1,0 @@
-README.md
-pyproject.toml
-coolmind/coolmind.egg-info/PKG-INFO
-coolmind/coolmind.egg-info/SOURCES.txt
-coolmind/coolmind.egg-info/dependency_links.txt
-coolmind/coolmind.egg-info/requires.txt
-coolmind/coolmind.egg-info/top_level.txt
-coolmind/core/engine.py

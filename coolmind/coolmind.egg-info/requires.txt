@@ -1,9 +1,0 @@
-numpy
-torch
-psutil
-transformers
-accelerate
-pyyaml
-
-[:sys_platform == "win32"]
-wmi
