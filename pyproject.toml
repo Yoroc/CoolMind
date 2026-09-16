@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "coolmind"
+version = "0.1.0"
+description = "Thermal-aware local AI inference engine"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+authors = [
+    {name = "Developer", email = "dev@example.com"}
+]
+dependencies = [
+    "numpy",
+    "torch",
+    "psutil",
+    "transformers",
+    "accelerate",
+    "wmi; sys_platform == 'win32'",
+    "pyyaml"
+]
+
+[project.urls]
+"Homepage" = "https://github.com/yourusername/CoolMind"
+
+[tool.setuptools.packages.find]
+where = ["coolmind"]
