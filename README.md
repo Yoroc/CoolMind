@@ -7,31 +7,24 @@
 
 ![Demo](./@yoro.svg)
 
-Run powerful AI models locally without overheating your PC.
+Stop your GPU from melting when running local AI models.
 
 ---
 
-## 🚀 Why CoolMind?
+## 🐱‍💻 Why this exists
 
-- **Thermal-aware**: Automatically manages model placement based on GPU temperature
-- **Zero-config**: Works out of the box with sensible defaults
-- **Windows-optimized**: Uses WMI for precise thermal monitoring on Windows
-- **Lightweight**: Built on Hugging Face Transformers with minimal dependencies
-- **Smart quantization**: Applies model quantization when temperatures rise
-- **Flexible CLI**: Both interactive and single-query modes available
-- **Safe to use**: Prevents thermal throttling without complex setup
+I got tired of my PC sounding like a jet engine every time I tried to run a local LLM. This little tool watches your GPU temperature and automatically scales back the model when things get too hot, then spins it back up when it cools down.
 
-Stop worrying about your PC overheating when running local AI models.  
-CoolMind keeps your system cool while maintaining performance.
+No fancy PhD required - just works.
 
 ---
 
-## 📦 Installation
+## 📦 Get it running
 
 ```bash
 pip install coolmind
 
-# Or install from source
+# Or if you like living dangerously:
 git clone https://github.com/Yoroc/CoolMind.git
 cd CoolMind
 pip install -e .
@@ -39,107 +32,115 @@ pip install -e .
 
 ---
 
-## 🛠️ Usage
+## ▶️ How to use
 
 ```bash
-# Interactive chat mode
+# Chat with an AI that won't melt your desk
 coolmind -m microsoft/DialoGPT-medium
 
-# Single query
-coolmind -m sshleifer/tiny-gpt2 -q "Explain machine learning simply" --max-length 100
+# Ask one question and peace out
+coolmind -m sshleifer/tiny-gpt2 -q "What's the meaning of life?" --max-length 50
 
-# With custom settings
-coolmind -m facebook/opt-125m -q "What is artificial intelligence?" --temperature 0.8 --top-p 0.9
+# Tweak how chatty the AI gets
+coolmind -m facebook/opt-125m -q "Explain broccoli to me like I'm five" --temperature 0.9
 
-# Disable thermal monitoring (for testing)
-coolmind -m sshleifer/tiny-gpt2 -q "Test query" --no-monitor
+# Turn off the temp watching (for testing only)
+coolmind -m sshleifer/tiny-gpt2 -q "Hello world" --no-monitor
 
-# Show model status after generation
-coolmind -m sshleifer/tiny-gpt2 -q "Hello" --max-length 10 --show-status
+# See what's happening under the hood
+coolmind -m sshleifer/tiny-gpt2 -q "Test" --max-length 10 --show-status
 ```
 
-### Options
+### Flags that do stuff
 
-| Flag | Description |
-|------|-------------|
-| `-m, --model <name>` | Model name or path from Hugging Face Hub |
-| `-q, --query <text>` | Single query mode (exit after response) |
-| `--max-length <int>` | Maximum generation length |
-| `--temperature <float>` | Sampling temperature (0.0 to 1.0) |
-| `--top-p <float>` | Top-p sampling parameter |
-| `--no-monitor` | Disable thermal monitoring |
-| `--show-status` | Display model status after generation |
-| `-c, --config <file>` | Path to configuration file |
+| Flag | What it actually does |
+|------|-----------------------|
+| `-m, --model` | Which AI model to grab from Hugging Face |
+| `-q, --query` | Ask one question instead of chatting |
+| `--max-length` | How long the AI's answer can be |
+| `--temperature` | How creative the AI gets (0.0 = boring, 1.0 = wild) |
+| `--top-p` | Another creativity knob (leave at 0.9 unless you know what you're doing) |
+| `--no-monitor` | Disable the temp checking (don't do this unless testing) |
+| `--show-status` | Show temp and AI status after it answers |
+| `-c, --config` | Use your own config file instead of the defaults |
 
 ---
 
-## 🧩 Configuration
+## ⚙️ Make it yours (config.yaml)
 
-Create a `config.yaml` file to customize behavior:
+Create a config.yaml to tweak how it behaves:
 
 ```yaml
 model:
-  default_name: "sshleifer/tiny-gpt2"
-  max_length: 50
-  temperature: 0.7
-  top_p: 0.9
-  do_sample: true
+  default_name: "sshleifer/tiny-gpt2"  # What model to use by default
+  max_length: 50                       # Default response length
+  temperature: 0.7                     # Default creativity level
+  top_p: 0.9                           # Default creativity knob 2
+  do_sample: true                      # Whether to get creative at all
 
 thermal:
-  max_gpu_temp: 80.0          # Temperature to trigger actions
-  cooldown_threshold: 50.0    # Below this: no quantization
-  offload_threshold: 55.0     # At/below: INT8, above: INT4
-  update_interval: 2.0        # Check interval (seconds)
-  enable_monitoring: true     # Enable thermal monitoring thread
+  max_gpu_temp: 80.0                   # Panic temperature (°C)
+  cooldown_threshold: 50.0             # Back to full power when cooler than this
+  offload_threshold: 55.0              # Start taking it easy when hotter than this
+  update_interval: 2.0                 # How often to check temp (seconds)
+  enable_monitoring: true              # Flip to false to disable temp watching
 
 logging:
-  level: "INFO"
+  level: "INFO"                        # How chatty the logs should be
   format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 ```
 
 ---
 
-## 🔧 How It Works
+## 🔬 What it actually does under the hood
 
-CoolMind continuously monitors your system's temperature using Windows Management Instrumentation (WMI). When temperatures exceed thresholds:
+This thing watches your GPU temp using Windows' built-in WMI (that's the part that makes it Windows-only for now). When things heat up:
 
-1. **Warm temperatures (50-55°C)**: Applies INT8 dynamic quantization to reduce computational load
-2. **Hot temperatures (55°C+)**: Applies more aggressive INT4 quantization or prepares for CPU offload
-3. **Cool temperatures (<50°C)**: Reloads model at full precision for optimal performance
-4. **Continuous cycle**: Maintains performance while preventing thermal throttling
+- **50-55°C**: It quietly slips the AI model into a lighter version (INT8 quantization) 
+- **55°C+**: It goes further with even lighter quantization or gets ready to move things to CPU
+- **<50°C**: Puts the model back at full strength when it's cool enough
+- **All day, every day**: Does this dance automatically in the background
 
-The monitoring runs in a background thread with configurable check intervals, ensuring real-time response to temperature changes.
+The temp checking runs on its own little thread so it doesn't slow down your AI chats.
 
 ---
 
-## 🏗️ Architecture
+## 🏗️ How it's put together
 
 ```
 coolmind/
-├── cli.py              # Command-line interface with argparse
+├── cli.py               # The command line thing you type
 ├── core/
-│   ├── engine.py       # Thermal-aware inference engine
-│   └── quantization.py # Dynamic quantization utilities
-├── __init__.py         # Package exports (main, CoolEngine, ThermalConfig)
-└── __main__.py         # Entry point for `python -m coolmind`
+│   ├── engine.py        # Where the AI and temp watching live
+│   └── quantization.py  # The magic that makes AI models use less power
+├── __init__.py          # Says what parts are public
+└── __main__.py          # Lets you run it with `python -m coolmind`
 ```
 
 ---
 
-## 📋 Requirements
+## 📋 What you need to run this
 
-- Windows 10/11 (for WMI-based thermal monitoring)
-- Python 3.9+
-- Recommended: NVIDIA GPU with CUDA support (optional)
-- Minimum 4GB RAM
-- Internet connection for initial model download
+- Windows 10 or 11 (sorry, Linux/macOS folks - WMI is Windows-only for now)
+- Python 3.9 or newer
+- An NVIDIA GPU helps but isn't required (will work on CPU too, just slower)
+- At least 4GB of RAM (8GB+ recommended if you want to actually use it)
+- Internet connection the first time it downloads an AI model
 
 ---
 
 ## 📜 License
 
-MIT © Yoroc  
+MIT License
+
+Copyright (c) 2026 Yoroc
+
+[The usual MIT license stuff - basically: use it however you want, don't sue me if it melts your cat]
 
 ---
 
-*Built for developers who want to run local AI models without turning their workstation into a space heater.*
+## 💭 Honest thoughts
+
+This started because I was sick of my workspace turning into a sauna just to chat with an AI. It's not perfect - the temp watching is Windows-only for now and the quantization is basic - but it actually works for keeping your PC from sounding like it's about to take off.
+
+If you find it useful, cool. If you've got ideas to make it better, even cooler. If it somehow catches your desk on fire... well, you were warned about the "don't sue me" part above.
