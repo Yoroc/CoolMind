@@ -68,6 +68,13 @@ def main():
     """Main CLI entry point"""
     parser = argparse.ArgumentParser(description="CoolMind - Thermal-aware AI inference engine")
     parser.add_argument("-m", "--model", help="Model name or path")
+    parser.add_argument(
+        "--pipeline",
+        type=str,
+        choices=["text-generation", "qa", "question-answering", "summarization", "summarize"],
+        default="text-generation",
+        help="AI pipeline to use (default: text-generation)"
+    )
     parser.add_argument("-q", "--query", help="Single query mode (exit after response)")
     parser.add_argument("--max-length", type=int, help="Maximum generation length")
     parser.add_argument("--temperature", type=float, help="Sampling temperature")
@@ -97,11 +104,63 @@ def main():
     logger = logging.getLogger(__name__)
     logger.info(f"Starting CoolMind with model: {model_name}")
     
-    # Initialize engine
+    
+    # Initialize engine with optional pipeline support
+    pipeline = None
     engine = CoolEngine(model_name=model_name, config=thermal_config)
+    
+    # Try to enhance with pipeline system for non-text-generation tasks
+    if args.pipeline != "text-generation":
+        try:
+            from .pipelines import get_pipeline
+            pipeline_candidate = get_pipeline(
+                args.pipeline,
+                model_name=model_name,
+                max_length=max_length,
+                temperature=temperature,
+                top_p=top_p,
+                do_sample=do_sample,
+                thermal_config=thermal_config
+            )
+            # If successful, we'll use the pipeline for inference
+            # but keep the engine for thermal monitoring compatibility
+            pipeline = pipeline_candidate
+            logger.info(f"Initialized {args.pipeline} pipeline for enhanced inference")
+        except ImportError:
+            logger.info("Pipeline system not available, using standard engine")
+        except Exception as e:
+            logger.warning(f"Could not initialize {args.pipeline} pipeline: {e}")
+            logger.info("Falling back to standard engine")
     
     if not args.no_monitor:
         engine.start_monitoring()
+        logger.info("Thermal monitoring started")
+    # Try to enhance with pipeline system for non-text-generation tasks
+    if args.pipeline != "text-generation":
+        try:
+            from .pipelines import get_pipeline
+            pipeline_candidate = get_pipeline(
+                args.pipeline,
+                model_name=model_name,
+                max_length=max_length,
+                temperature=temperature,
+                top_p=top_p,
+                do_sample=do_sample,
+                thermal_config=thermal_config
+            )
+            # If successful, we'll use the pipeline for inference
+            # but keep the engine for thermal monitoring compatibility
+            pipeline = pipeline_candidate
+            logger.info(f"Initialized {args.pipeline} pipeline for enhanced inference")
+        except ImportError:
+            logger.info("Pipeline system not available, using standard engine")
+        except Exception as e:
+            logger.warning(f"Could not initialize {args.pipeline} pipeline: {e}")
+            logger.info("Falling back to standard engine")
+    
+    if not args.no_monitor:
+        engine.start_monitoring()
+        logger.info("Thermal monitoring started")
         logger.info("Thermal monitoring started")
     
     try:
