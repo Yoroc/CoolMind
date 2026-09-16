@@ -147,3 +147,50 @@ If you find it useful, cool. If you've got ideas to make it better, even cooler.
 <!-- Last updated: Wed, Sep 16, 2026  4:50:44 PM -->
 
 <!-- Updated: 1789575681 -->
+
+## ⚡ Performance Features
+
+### 🧠 Intelligent Model Caching
+CoolMind now includes smart model caching to avoid reloading the same models multiple times:
+- **Global cache**: Models are cached by `(model_name, device)` tuple
+- **Thread-safe**: Concurrent access protected by locks
+- **Weak references**: Automatic cleanup when models are no longer used
+- **Cache statistics**: Monitor cache hit rates and memory usage
+
+### 📦 Batch Processing
+Enhanced pipelines support batch processing for improved throughput:
+- **Text generation**: Process multiple prompts in a single batch
+- **Future pipelines**: QA and summarization pipelines ready for batch enhancements
+- **Backward compatible**: Single inputs still work exactly as before
+
+### 📊 Cache Monitoring
+You can monitor cache performance programmatically:
+```python
+from coolmind.pipelines.base import BasePipeline
+
+# Get cache statistics
+stats = BasePipeline.get_cache_stats()
+print(f"Cached models: {stats['valid_entries']}/{stats['total_cached_entries']}")
+
+# Clear cache when needed (e.g., to free memory)
+BasePipeline.clear_cache()
+```
+
+## 🚧 Planned Enhancements
+
+### 🔧 Additional Pipelines
+- **Translation**: Multilingual translation pipeline
+- **Classification**: Text classification and sentiment analysis
+- **Feature Extraction**: Embeddings and feature vectors
+- **Summarization Variants**: Abstractive and extractive approaches
+
+### 📦 Distribution Improvements
+- **Docker containers**: Official Docker images for easy deployment
+- **Installers**: Native Windows/MSI and cross-platform installers
+- **Service management**: systemd services and Windows service templates
+
+### ⚡ Advanced Performance
+- **Model quantization**: Dynamic INT4/INT8 based on usage patterns
+- **KV-cache optimization**: Efficient attention caching for generation
+- **Async support**: Full async/await pipeline interfaces
+- **Model pooling**: Pre-warmed model instances for low-latency requests
