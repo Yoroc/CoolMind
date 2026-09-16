@@ -1,0 +1,40 @@
+version: "3.8"
+
+services:
+  coolmind:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ~/.cache/huggingface:/root/.cache/huggingface:ro
+    environment:
+      - PYTHONUNBUFFERED=1
+      - HF_HOME=/root/.cache/huggingface
+    command: >
+      python -m coolmind
+      --model sshleifer/tiny-gpt2
+      --pipeline text-generation
+      --show-status
+    restart: unless-stopped
+
+  # Web API service (when web API is re-enabled)
+  coolmind-api:
+    build: .
+    ports:
+      - "8001:8000"
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ~/.cache/huggingface:/root/.cache/huggingface:ro
+    environment:
+      - PYTHONUNBUFFERED=1
+      - HF_HOME=/root/.cache/huggingface
+    command: >
+      python -m coolmind.web.server
+      --host 0.0.0.0
+      --port 8000
+      --workers 4
+    restart: unless-stopped
+
