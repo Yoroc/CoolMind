@@ -194,3 +194,7 @@ BasePipeline.clear_cache()
 - **KV-cache optimization**: Efficient attention caching for generation
 - **Async support**: Full async/await pipeline interfaces
 - **Model pooling**: Pre-warmed model instances for low-latency requests
+
+## ⚡ Advanced Performance Features
+
+Advanced Features: LRU caching, async pipeline support, model pooling foundation
