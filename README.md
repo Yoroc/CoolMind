@@ -198,3 +198,15 @@ BasePipeline.clear_cache()
 ## ⚡ Advanced Performance Features
 
 Advanced Features: LRU caching, async pipeline support, model pooling foundation
+
+## 🐳 Cloud-Native & Deployment
+
+CoolMind is now ready for enterprise deployment with:
+
+- 🐳 Docker containerization
+- ☸️ Kubernetes orchestration
+- 📦 Helm charts for easy K8s deployment
+- 🔧 Docker Compose for local development
+- 📋 Comprehensive deployment guides
+
+See DEPLOYMENT.md for detailed instructions
