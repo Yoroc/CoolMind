@@ -210,3 +210,59 @@ CoolMind is now ready for enterprise deployment with:
 - 📋 Comprehensive deployment guides
 
 See DEPLOYMENT.md for detailed instructions
+
+## 🐧 Linux Support (Planned)
+
+While CoolMind is currently optimized for Windows using WMI for GPU temperature monitoring,
+Linux support is planned for future releases. The architecture is designed to be cross-platform
+with pluggable thermal monitoring backends:
+
+- **Windows**: WMI (Windows Management Instrumentation)
+- **Linux**: nvidia-smi, thermal zones (/sys/class/thermal), lm-sensors
+- **Fallback**: Simulated temperature for testing/unsupported hardware
+
+The modular design makes it easy to add platform-specific thermal monitoring implementations
+as needed for different deployment environments.
+
+## 🔄 Staying Updated
+
+To get the latest features and improvements:
+
+1. **GitHub Repository**: Watch the [Yoroc/CoolMind](https://github.com/Yoroc/CoolMind) repository for releases
+2. **PyPI Updates**: Run `pip install --upgrade coolmind` to get the latest version
+3. **Release Notes**: Check the [GitHub Releases page](https://github.com/Yoroc/CoolMind/releases) for detailed changelogs
+
+## 🐧 Linux Support Roadmap
+
+CoolMind is currently optimized for Windows using WMI for GPU temperature monitoring.
+Linux support is planned for future releases with the following approach:
+
+### Planned Linux Thermal Monitoring Methods:
+
+1. **NVIDIA GPUs**: `nvidia-smi` for accurate GPU temperature readings
+2. **Thermal Zones**: `/sys/class/thermal` interface for hardware temperature sensors
+3. **LM-Sensors**: `lm-sensors` utility for comprehensive motherboard/sensor monitoring
+4. **Fallback**: Simulated temperatures for testing and compatibility
+
+The modular design allows easy extension to additional platforms as needed.
+
+
+## 🐧 Linux Support Roadmap
+
+CoolMind is currently optimized for Windows using WMI for GPU temperature monitoring.
+Linux support is planned for future releases with a modular design that allows easy extension:
+
+### Planned Linux Thermal Monitoring Methods:
+
+1. **NVIDIA GPUs**: `nvidia-smi` for accurate GPU temperature readings
+2. **Thermal Zones**: `/sys/class/thermal` interface for hardware temperature sensors
+3. **LM-Sensors**: `lm-sensors` utility for comprehensive motherboard/sensor monitoring
+4. **Fallback**: Simulated temperatures for testing and compatibility
+
+## 🔄 Getting Updates
+
+To stay current with the latest features and improvements:
+
+1. **GitHub Repository**: Watch the [Yoroc/CoolMind](https://github.com/Yoroc/CoolMind) repository
+2. **PyPI Updates**: Run `pip install --upgrade coolmind` to get the latest version
+3. **Release Notes**: Check the [GitHub Releases page](https://github.com/Yoroc/CoolMind/releases)
