@@ -64,7 +64,39 @@ def load_config(config_path: Path = None) -> dict:
         logging.warning(f"Failed to load config from {config_path}: {e}")
         return default_config
 
+
+import requests
+import json
+from packaging import version
+
+def check_for_updates():
+    """Check GitHub for the latest version of CoolMind"""
+    try:
+        response = requests.get("https://api.github.com/repos/Yoroc/CoolMind/releases/latest", timeout=5)
+        if response.status_code == 200:
+            latest_release = response.json()
+            latest_version = latest_release['tag_name'].replace('v', '')
+            
+            # Get local version from package
+            import coolmind
+            local_version = coolmind.__version__ if hasattr(coolmind, '__version__') else '0.1.0'
+            
+            if version.parse(latest_version) > version.parse(local_version):
+                return True, latest_version
+        return False, None
+    except Exception:
+        return False, None
+
+def show_update_notification():
+    """Show a notification if an update is available"""
+    update_available, latest_version = check_for_updates()
+    if update_available:
+        print("\n🚀 UPDATE AVAILABLE: CoolMind v\" + latest_version + \" is now available!\n")
+        print("👉 Run 'pip install --upgrade coolmind' to update.\n")
+
 def main():
+    # Check for updates
+    show_update_notification()
     """Main CLI entry point"""
     parser = argparse.ArgumentParser(description="CoolMind - Thermal-aware AI inference engine")
     parser.add_argument("-m", "--model", help="Model name or path")
