@@ -202,25 +202,6 @@ BasePipeline.clear_cache()
 
 ### ⚡ Advanced Performance
 - **Model quantization**: Dynamic INT4/INT8 based on usage patterns
-- **KV-cache optimization**: Efficient attention caching for generation
-- **Async support**: Full async/await pipeline interfaces
-- **Model pooling**: Pre-warmed model instances for low-latency requests
-
-## ⚡ Advanced Performance Features
-
-Advanced Features: LRU caching, async pipeline support, model pooling foundation
-
-## 🐳 Cloud-Native & Deployment
-
-CoolMind is now ready for enterprise deployment with:
-
-- 🐳 Docker containerization
-- ☸️ Kubernetes orchestration
-- 📦 Helm charts for easy K8s deployment
-- 🔧 Docker Compose for local development
-- 📋 Comprehensive deployment guides
-
-See DEPLOYMENT.md for detailed instructions
 
 ## 🐧 Linux Support (Planned)
 
@@ -235,49 +216,52 @@ with pluggable thermal monitoring backends:
 The modular design makes it easy to add platform-specific thermal monitoring implementations
 as needed for different deployment environments.
 
-## 🔄 Staying Updated
-
-To get the latest features and improvements:
-
-1. **GitHub Repository**: Watch the [Yoroc/CoolMind](https://github.com/Yoroc/CoolMind) repository for releases
-2. **PyPI Updates**: Run `pip install --upgrade coolmind` to get the latest version
-3. **Release Notes**: Check the [GitHub Releases page](https://github.com/Yoroc/CoolMind/releases) for detailed changelogs
-
-## 🐧 Linux Support Roadmap
-
-CoolMind is currently optimized for Windows using WMI for GPU temperature monitoring.
-Linux support is planned for future releases with the following approach:
-
-### Planned Linux Thermal Monitoring Methods:
-
-1. **NVIDIA GPUs**: `nvidia-smi` for accurate GPU temperature readings
-2. **Thermal Zones**: `/sys/class/thermal` interface for hardware temperature sensors
-3. **LM-Sensors**: `lm-sensors` utility for comprehensive motherboard/sensor monitoring
-4. **Fallback**: Simulated temperatures for testing and compatibility
-
-The modular design allows easy extension to additional platforms as needed.
-
-
-## 🐧 Linux Support Roadmap
-
-CoolMind is currently optimized for Windows using WMI for GPU temperature monitoring.
-Linux support is planned for future releases with a modular design that allows easy extension:
-
-### Planned Linux Thermal Monitoring Methods:
-
-1. **NVIDIA GPUs**: `nvidia-smi` for accurate GPU temperature readings
-2. **Thermal Zones**: `/sys/class/thermal` interface for hardware temperature sensors
-3. **LM-Sensors**: `lm-sensors` utility for comprehensive motherboard/sensor monitoring
-4. **Fallback**: Simulated temperatures for testing and compatibility
-
-## 🔄 Getting Updates
+## 🔄 Getting Updates / Staying Updated
 
 To stay current with the latest features and improvements:
 
 1. **GitHub Repository**: Watch the [Yoroc/CoolMind](https://github.com/Yoroc/CoolMind) repository
-2. **PyPI Updates**: Run `pip install --upgrade coolmind` to get the latest version
+2. **PyPI Updates**: Run Requirement already satisfied: coolmind in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (0.1.0)
 3. **Release Notes**: Check the [GitHub Releases page](https://github.com/Yoroc/CoolMind/releases)
-
+ite-packages (from coolmind) (2.4.3)
+Requirement already satisfied: torch in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from coolmind) (2.14.0)
+Requirement already satisfied: psutil in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from coolmind) (7.2.2)
+Requirement already satisfied: transformers in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from coolmind) (5.17.0)
+Requirement already satisfied: accelerate in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from coolmind) (1.15.0)
+Requirement already satisfied: wmi in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from coolmind) (1.5.1)
+Requirement already satisfied: pyyaml in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from coolmind) (6.0.3)
+Requirement already satisfied: packaging>=20.0 in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from accelerate->coolmind) (26.3)
+Requirement already satisfied: huggingface_hub>=0.21.0 in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from accelerate->coolmind) (1.24.0)
+Requirement already satisfied: safetensors>=0.4.3 in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from accelerate->coolmind) (0.8.0)
+Requirement already satisfied: click<9.0.0,>=8.4.2 in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from huggingface_hub>=0.21.0->accelerate->coolmind) (8.4.2)
+Requirement already satisfied: filelock>=3.10.0 in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from huggingface_hub>=0.21.0->accelerate->coolmind) (3.32.4)
+Requirement already satisfied: fsspec>=2023.5.0 in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from huggingface_hub>=0.21.0->accelerate->coolmind) (2026.7.0)
+Requirement already satisfied: hf-xet<2.0.0,>=1.5.1 in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from huggingface_hub>=0.21.0->accelerate->coolmind) (1.6.0)
+Requirement already satisfied: httpx<1,>=0.23.0 in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from huggingface_hub>=0.21.0->accelerate->coolmind) (0.28.1)
+Requirement already satisfied: tqdm>=4.42.1 in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from huggingface_hub>=0.21.0->accelerate->coolmind) (4.67.3)
+Requirement already satisfied: typing-extensions>=4.1.0 in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from huggingface_hub>=0.21.0->accelerate->coolmind) (4.15.0)
+Requirement already satisfied: colorama in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from click<9.0.0,>=8.4.2->huggingface_hub>=0.21.0->accelerate->coolmind) (0.4.6)
+Requirement already satisfied: anyio in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from httpx<1,>=0.23.0->huggingface_hub>=0.21.0->accelerate->coolmind) (4.12.1)
+Requirement already satisfied: certifi in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from httpx<1,>=0.23.0->huggingface_hub>=0.21.0->accelerate->coolmind) (2026.5.20)
+Requirement already satisfied: httpcore==1.* in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from httpx<1,>=0.23.0->huggingface_hub>=0.21.0->accelerate->coolmind) (1.0.9)
+Requirement already satisfied: idna in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from httpx<1,>=0.23.0->huggingface_hub>=0.21.0->accelerate->coolmind) (3.18)
+Requirement already satisfied: h11>=0.16 in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from httpcore==1.*->httpx<1,>=0.23.0->huggingface_hub>=0.21.0->accelerate->coolmind) (0.16.0)
+Requirement already satisfied: setuptools>=77.0.3 in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from torch->coolmind) (84.0.0)
+Requirement already satisfied: sympy>=1.13.3 in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from torch->coolmind) (1.14.0)
+Requirement already satisfied: networkx>=2.5.1 in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from torch->coolmind) (3.6.1)
+Requirement already satisfied: jinja2 in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from torch->coolmind) (3.1.6)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from sympy>=1.13.3->torch->coolmind) (1.3.0)
+Requirement already satisfied: MarkupSafe>=2.0 in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from jinja2->torch->coolmind) (3.0.3)
+Requirement already satisfied: regex>=2025.10.22 in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from transformers->coolmind) (2026.9.10)
+Requirement already satisfied: tokenizers<0.24.0,>=0.23.1 in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from transformers->coolmind) (0.23.1)
+Requirement already satisfied: typer in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from transformers->coolmind) (0.27.2)
+Requirement already satisfied: shellingham>=1.3.0 in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from typer->transformers->coolmind) (1.5.4)
+Requirement already satisfied: rich>=13.8.0 in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from typer->transformers->coolmind) (14.3.3)
+Requirement already satisfied: annotated-doc>=0.0.2 in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from typer->transformers->coolmind) (0.0.4)
+Requirement already satisfied: markdown-it-py>=2.2.0 in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from rich>=13.8.0->typer->transformers->coolmind) (4.0.0)
+Requirement already satisfied: pygments<3.0.0,>=2.13.0 in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from rich>=13.8.0->typer->transformers->coolmind) (2.20.0)
+Requirement already satisfied: mdurl~=0.1 in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from markdown-it-py>=2.2.0->rich>=13.8.0->typer->transformers->coolmind) (0.1.2)
+Requirement already satisfied: pywin32 in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from wmi->coolmind) (311) to get the latest version
 
 ## 🔧 Recent Enhancements
 
@@ -299,6 +283,45 @@ Users can stay current by:
 
 1. **GitHub Repository**: Watch the [Yoroc/CoolMind](https://github.com/Yoroc/CoolMind) repository for releases
 
-2. **PyPI Updates**: Run `pip install --upgrade coolmind` to get the latest version
+2. **PyPI Updates**: Run Requirement already satisfied: coolmind in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (0.1.0)
 
+equirement already satisfied: numpy in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from coolmind) (2.4.3)
+Requirement already satisfied: torch in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from coolmind) (2.14.0)
+Requirement already satisfied: psutil in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from coolmind) (7.2.2)
+Requirement already satisfied: transformers in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from coolmind) (5.17.0)
+Requirement already satisfied: accelerate in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from coolmind) (1.15.0)
+Requirement already satisfied: wmi in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from coolmind) (1.5.1)
+Requirement already satisfied: pyyaml in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from coolmind) (6.0.3)
+Requirement already satisfied: packaging>=20.0 in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from accelerate->coolmind) (26.3)
+Requirement already satisfied: huggingface_hub>=0.21.0 in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from accelerate->coolmind) (1.24.0)
+Requirement already satisfied: safetensors>=0.4.3 in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from accelerate->coolmind) (0.8.0)
+Requirement already satisfied: click<9.0.0,>=8.4.2 in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from huggingface_hub>=0.21.0->accelerate->coolmind) (8.4.2)
+Requirement already satisfied: filelock>=3.10.0 in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from huggingface_hub>=0.21.0->accelerate->coolmind) (3.32.4)
+Requirement already satisfied: fsspec>=2023.5.0 in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from huggingface_hub>=0.21.0->accelerate->coolmind) (2026.7.0)
+Requirement already satisfied: hf-xet<2.0.0,>=1.5.1 in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from huggingface_hub>=0.21.0->accelerate->coolmind) (1.6.0)
+Requirement already satisfied: httpx<1,>=0.23.0 in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from huggingface_hub>=0.21.0->accelerate->coolmind) (0.28.1)
+Requirement already satisfied: tqdm>=4.42.1 in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from huggingface_hub>=0.21.0->accelerate->coolmind) (4.67.3)
+Requirement already satisfied: typing-extensions>=4.1.0 in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from huggingface_hub>=0.21.0->accelerate->coolmind) (4.15.0)
+Requirement already satisfied: colorama in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from click<9.0.0,>=8.4.2->huggingface_hub>=0.21.0->accelerate->coolmind) (0.4.6)
+Requirement already satisfied: anyio in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from httpx<1,>=0.23.0->huggingface_hub>=0.21.0->accelerate->coolmind) (4.12.1)
+Requirement already satisfied: certifi in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from httpx<1,>=0.23.0->huggingface_hub>=0.21.0->accelerate->coolmind) (2026.5.20)
+Requirement already satisfied: httpcore==1.* in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from httpx<1,>=0.23.0->huggingface_hub>=0.21.0->accelerate->coolmind) (1.0.9)
+Requirement already satisfied: idna in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from httpx<1,>=0.23.0->huggingface_hub>=0.21.0->accelerate->coolmind) (3.18)
+Requirement already satisfied: h11>=0.16 in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from httpcore==1.*->httpx<1,>=0.23.0->huggingface_hub>=0.21.0->accelerate->coolmind) (0.16.0)
+Requirement already satisfied: setuptools>=77.0.3 in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from torch->coolmind) (84.0.0)
+Requirement already satisfied: sympy>=1.13.3 in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from torch->coolmind) (1.14.0)
+Requirement already satisfied: networkx>=2.5.1 in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from torch->coolmind) (3.6.1)
+Requirement already satisfied: jinja2 in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from torch->coolmind) (3.1.6)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from sympy>=1.13.3->torch->coolmind) (1.3.0)
+Requirement already satisfied: MarkupSafe>=2.0 in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from jinja2->torch->coolmind) (3.0.3)
+Requirement already satisfied: regex>=2025.10.22 in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from transformers->coolmind) (2026.9.10)
+Requirement already satisfied: tokenizers<0.24.0,>=0.23.1 in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from transformers->coolmind) (0.23.1)
+Requirement already satisfied: typer in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from transformers->coolmind) (0.27.2)
+Requirement already satisfied: shellingham>=1.3.0 in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from typer->transformers->coolmind) (1.5.4)
+Requirement already satisfied: rich>=13.8.0 in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from typer->transformers->coolmind) (14.3.3)
+Requirement already satisfied: annotated-doc>=0.0.2 in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from typer->transformers->coolmind) (0.0.4)
+Requirement already satisfied: markdown-it-py>=2.2.0 in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from rich>=13.8.0->typer->transformers->coolmind) (4.0.0)
+Requirement already satisfied: pygments<3.0.0,>=2.13.0 in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from rich>=13.8.0->typer->transformers->coolmind) (2.20.0)
+Requirement already satisfied: mdurl~=0.1 in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from markdown-it-py>=2.2.0->rich>=13.8.0->typer->transformers->coolmind) (0.1.2)
+Requirement already satisfied: pywin32 in C:\Users\intel\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages (from wmi->coolmind) (311) to get the latest version
 3. **Release Notes**: Check the [GitHub Releases page](https://github.com/Yoroc/CoolMind/releases) for detailed changelogs
