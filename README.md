@@ -1,3 +1,14 @@
+# CoolMind: Thermal-Aware AI Inference Engine
+
+CoolMind is a thermal-aware local AI inference engine that prevents overheating by dynamically adjusting model quantization based on GPU temperature. Built for Windows with WMI-based thermal monitoring, it automatically optimizes performance while keeping your system cool.
+
+## 🌟 Key Features
+
+- **🔥 Thermal-Aware Intelligence**: Real-time GPU temperature monitoring with automatic quantization adjustment
+- **❄️ Dynamic Quantization**: Switches between FP32, INT8, and INT4 based on temperature thresholds
+- **🚀 Performance Optimized**: LRU caching, async support, and model pooling for efficient inference
+- **🛡️ System Protection**: Prevents overheating by offloading to CPU when temperatures rise
+- **🔧 Enterprise Ready**: Docker, Kubernetes, and Helm chart support for cloud deployment
 # CoolMind
 
 ![CI](https://github.com/Yoroc/CoolMind/actions/workflows/ci.yml/badge.svg)
@@ -309,4 +320,29 @@ The application is designed to check for updates from the official GitHub reposi
 Users can stay current by:
 1. **GitHub Repository**: Watch the [Yoroc/CoolMind](https://github.com/Yoroc/CoolMind) repository for releases
 2. **PyPI Updates**: Run `pip install --upgrade coolmind` to get the latest version
+3. **Release Notes**: Check the [GitHub Releases page](https://github.com/Yoroc/CoolMind/releases) for detailed changelogs
+
+
+## 🔧 Recent Enhancements
+
+### 💻 Integrated Graphics & CPU-Only Support
+
+CoolMind now intelligently handles systems without dedicated GPUs:
+
+- **Integrated Graphics**: Intel HD/UHD/Iris, AMD integrated graphics supported
+
+- **CPU-Only Systems**: Graceful degradation to CPU-based monitoring
+
+- **No GPU Detected**: Automatic fallback to available thermal sensors or simulated mode
+
+### 🔄 Update Awareness
+
+The application is designed to check for updates from the official GitHub repository.
+
+Users can stay current by:
+
+1. **GitHub Repository**: Watch the [Yoroc/CoolMind](https://github.com/Yoroc/CoolMind) repository for releases
+
+2. **PyPI Updates**: Run `pip install --upgrade coolmind` to get the latest version
+
 3. **Release Notes**: Check the [GitHub Releases page](https://github.com/Yoroc/CoolMind/releases) for detailed changelogs
