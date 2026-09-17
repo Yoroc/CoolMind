@@ -266,3 +266,25 @@ To stay current with the latest features and improvements:
 1. **GitHub Repository**: Watch the [Yoroc/CoolMind](https://github.com/Yoroc/CoolMind) repository
 2. **PyPI Updates**: Run `pip install --upgrade coolmind` to get the latest version
 3. **Release Notes**: Check the [GitHub Releases page](https://github.com/Yoroc/CoolMind/releases)
+
+
+## 🔧 Recent Enhancements
+
+### 💻 Integrated Graphics & CPU-Only Support
+
+CoolMind now intelligently handles systems without dedicated GPUs:
+
+- **Integrated Graphics**: Intel HD/UHD/Iris, AMD integrated graphics supported
+
+- **CPU-Only Systems**: Graceful degradation to CPU-based monitoring
+
+- **No GPU Detected**: Automatic fallback to available thermal sensors or simulated mode
+
+### 🔄 Update Awareness
+
+The application is designed to check for updates from the official GitHub repository.
+
+Users can stay current by:
+1. **GitHub Repository**: Watch the [Yoroc/CoolMind](https://github.com/Yoroc/CoolMind) repository for releases
+2. **PyPI Updates**: Run `pip install --upgrade coolmind` to get the latest version
+3. **Release Notes**: Check the [GitHub Releases page](https://github.com/Yoroc/CoolMind/releases) for detailed changelogs
