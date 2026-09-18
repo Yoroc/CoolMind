@@ -8,6 +8,7 @@ from .base import BasePipeline
 from .text_generation import TextGenerationPipeline
 from .question_answering import QuestionAnsweringPipeline
 from .summarization import SummarizationPipeline
+from .translation import TranslationPipeline
 from .async_base import AsyncBasePipeline
 from .async_text_generation import AsyncTextGenerationPipeline
 
@@ -18,6 +19,8 @@ SYNC_PIPELINE_REGISTRY = {
     "question-answering": QuestionAnsweringPipeline,
     "summarization": SummarizationPipeline,
     "summarize": SummarizationPipeline,
+    "translation": TranslationPipeline,
+    "translate": TranslationPipeline,
 }
 
 # Registry of available asynchronous pipelines
@@ -60,6 +63,7 @@ __all__ = [
     "TextGenerationPipeline", 
     "QuestionAnsweringPipeline", 
     "SummarizationPipeline",
+    "TranslationPipeline",
     "AsyncBasePipeline",
     "AsyncTextGenerationPipeline",
     "get_pipeline", 
@@ -69,4 +73,3 @@ __all__ = [
     "SYNC_PIPELINE_REGISTRY",
     "ASYNC_PIPELINE_REGISTRY"
 ]
-
