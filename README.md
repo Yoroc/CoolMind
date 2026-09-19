@@ -4,11 +4,11 @@ CoolMind is a thermal-aware local AI inference engine that prevents overheating 
 
 ##  Key Features
 
-- ** Thermal-Aware Intelligence**: Real-time GPU temperature monitoring with automatic quantization adjustment
-- ** Dynamic Quantization**: Switches between FP32, INT8, and INT4 based on temperature thresholds
-- ** Performance Optimized**: LRU caching, async support, and model pooling for efficient inference
-- ** System Protection**: Prevents overheating by offloading to CPU when temperatures rise
-- ** Enterprise Ready**: Docker, Kubernetes, and Helm chart support for cloud deployment
+- **Thermal-Aware Intelligence** : Real-time GPU temperature monitoring with automatic quantization adjustment
+- **Dynamic Quantization** : Switches between FP32, INT8, and INT4 based on temperature thresholds
+- **Performance Optimized** : LRU caching, async support, and model pooling for efficient inference
+- **System Protection** : Prevents overheating by offloading to CPU when temperatures rise
+- **Enterprise Ready** : Docker, Kubernetes, and Helm chart support for cloud deployment
 # CoolMind
 
 ![CI](https://github.com/Yoroc/CoolMind/actions/workflows/ci.yml/badge.svg)
