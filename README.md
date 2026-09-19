@@ -2,13 +2,13 @@
 
 CoolMind is a thermal-aware local AI inference engine that prevents overheating by dynamically adjusting model quantization based on GPU temperature. Built for Windows with WMI-based thermal monitoring, it automatically optimizes performance while keeping your system cool.
 
-## 🌟 Key Features
+##  Key Features
 
-- **🔥 Thermal-Aware Intelligence**: Real-time GPU temperature monitoring with automatic quantization adjustment
-- **❄️ Dynamic Quantization**: Switches between FP32, INT8, and INT4 based on temperature thresholds
-- **🚀 Performance Optimized**: LRU caching, async support, and model pooling for efficient inference
-- **🛡️ System Protection**: Prevents overheating by offloading to CPU when temperatures rise
-- **🔧 Enterprise Ready**: Docker, Kubernetes, and Helm chart support for cloud deployment
+- ** Thermal-Aware Intelligence**: Real-time GPU temperature monitoring with automatic quantization adjustment
+- ** Dynamic Quantization**: Switches between FP32, INT8, and INT4 based on temperature thresholds
+- ** Performance Optimized**: LRU caching, async support, and model pooling for efficient inference
+- ** System Protection**: Prevents overheating by offloading to CPU when temperatures rise
+- ** Enterprise Ready**: Docker, Kubernetes, and Helm chart support for cloud deployment
 # CoolMind
 
 ![CI](https://github.com/Yoroc/CoolMind/actions/workflows/ci.yml/badge.svg)
@@ -22,7 +22,7 @@ Stop your GPU from melting when running local AI models.
 
 ---
 
-## 🐱‍💻 Why this exists
+##  Why this exists
 
 I got tired of my PC sounding like a jet engine every time I tried to run a local LLM. This little tool watches your GPU temperature and automatically scales back the model when things get too hot, then spins it back up when it cools down.
 
@@ -30,7 +30,7 @@ No fancy PhD required - just works.
 
 ---
 
-## 📦 Get it running
+##  Get it running
 
 ```bash
 pip install coolmind
@@ -43,7 +43,7 @@ pip install -e .
 
 ---
 
-## ▶️ How to use
+##  How to use
 
 ```bash
 # Chat with an AI that won't melt your desk
@@ -77,7 +77,7 @@ coolmind -m sshleifer/tiny-gpt2 -q "Test" --max-length 10 --show-status
 
 ---
 
-## ⚙️ Make it yours (config.yaml)
+##  Make it yours (config.yaml)
 
 Create a config.yaml to tweak how it behaves:
 
@@ -103,7 +103,7 @@ logging:
 
 ---
 
-## 🔬 What it actually does under the hood
+##  What it actually does under the hood
 
 This thing watches your GPU temp using Windows' built-in WMI (that's the part that makes it Windows-only for now). When things heat up:
 
@@ -116,7 +116,7 @@ The temp checking runs on its own little thread so it doesn't slow down your AI 
 
 ---
 
-## 🏗️ How it's put together
+##  How it's put together
 
 ```
 coolmind/
@@ -130,7 +130,7 @@ coolmind/
 
 ---
 
-## 📋 What you need to run this
+##  What you need to run this
 
 - Windows 10 or 11 (sorry, Linux/macOS folks - WMI is Windows-only for now)
 - Python 3.9 or newer
@@ -140,7 +140,7 @@ coolmind/
 
 ---
 
-## 📜 License
+##  License
 
 MIT License
 
@@ -150,7 +150,7 @@ Copyright (c) 2026 Yoroc
 
 ---
 
-## 💭 Honest thoughts
+##  Honest thoughts
 
 This started because I was sick of my workspace turning into a sauna just to chat with an AI. It's not perfect - the temp watching is Windows-only for now and the quantization is basic - but it actually works for keeping your PC from sounding like it's about to take off.
 
